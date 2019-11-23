@@ -10,4 +10,13 @@
     bottom: 0;
     width: 100%;
   }
+  .buttons-options {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    .button-option {
+      background: white;
+      padding: 1rem;
+    }
+  }
 }

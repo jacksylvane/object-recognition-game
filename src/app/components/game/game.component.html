@@ -1,4 +1,22 @@
 <div class="wrapper">
-  <app-screen></app-screen>
-  <app-timer></app-timer>
+  <app-screen [style.opacity]="imageClasified ? 1 : 0"></app-screen>
+  <ng-container *ngIf="imageClasified else detecting">
+    <app-timer></app-timer>
+    <div class="buttons-options">
+      <div *ngFor="let button of possibleAnswers">
+        <button class="button-option" [style.background]="button.correct ? 'green' : 'white'"
+          (click)="selectAnswer(button.name)">{{button.name}}</button>
+      </div>
+    </div>
+    <div class="result" *ngIf="showResult">
+      <h3>
+        {{ prediction }}
+      </h3>
+      <br>
+      {{ 'probability: ' + (correctAnswer.probability * 100).toFixed(0)  + '%'}}
+    </div>
+  </ng-container>
+  <ng-template #detecting>
+    Detecting...
+  </ng-template>
 </div>
