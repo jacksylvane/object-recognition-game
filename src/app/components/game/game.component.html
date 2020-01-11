@@ -1,19 +1,19 @@
 <div class="wrapper">
-  <app-screen [style.opacity]="imageClasified ? 1 : 0"></app-screen>
-  <ng-container *ngIf="imageClasified else detecting">
-    <app-timer></app-timer>
-    <div class="buttons-options">
-      <div *ngFor="let button of possibleAnswers">
-        <button class="button-option" [style.background]="button.correct ? 'green' : 'white'"
-          (click)="selectAnswer(button.name)">{{button.name}}</button>
-      </div>
+  <div class="images">
+    <div *ngFor="let image of images">
+      <app-screen [img]="image" [gamePlaying]="gamePlaying" (answeredResult)="selectAnswer($event)"></app-screen>
     </div>
-    <div class="result" *ngIf="showResult">
+  </div>
+  <ng-container *ngIf="imagesClasified else detecting">
+    <button (click)="startGame()">Start game</button>
+    <app-timer></app-timer>
+    <div class="result" *ngIf="gameOver">
       <h3>
-        {{ prediction }}
+        Your score: {{ score }}
       </h3>
+      <p>Guessed: {{imagesCorrectlyGuessed}}/{{images.length}}</p>
       <br>
-      {{ 'probability: ' + (correctAnswer.probability * 100).toFixed(0)  + '%'}}
+      <!-- {{ 'probability: ' + (correctAnswer.probability * 100).toFixed(0)  + '%'}} -->
     </div>
   </ng-container>
   <ng-template #detecting>

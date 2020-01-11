@@ -1,1 +1,12 @@
-<img id="img" src="assets/dogs.jpg" alt="" srcset="" [style.filter]="'blur(' + blurredIndex + 'px)' | sanitizier">
+<ng-container *ngIf="!img.guessed">
+  <div [style.opacity]="img.shown ? 1 : 0">
+    <img [id]="img.name" [src]="'assets/' + img.name + '.jpg'" alt="" srcset=""
+      [style.filter]="'blur(' + blurredIndex + 'px)' | sanitizier">
+    <div class="buttons-options" *ngIf="gameStarted && img && img.possibleAnswers.length > 0">
+      <div *ngFor="let button of img.possibleAnswers; let i = index" [style.order]="i === 0 ? randomPosition : i">
+        <button class="button-option" [style.background]="getClass(button.correct)"
+          (click)="answerQuestion(button.name)">{{button.name}}</button>
+      </div>
+    </div>
+  </div>
+</ng-container>
