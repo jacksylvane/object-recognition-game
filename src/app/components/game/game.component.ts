@@ -18,7 +18,7 @@ export class GameComponent implements OnInit {
 
   images = [
     {
-      name: 'kebab',
+      name: '6',
       possibleAnswers: [],
       showResult: false,
       guessed: false,

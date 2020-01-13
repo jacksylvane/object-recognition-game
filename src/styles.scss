@@ -1,1 +1,22 @@
 /* You can add global styles to this file, and also import other style files */
+body {
+  font-family: 'Public Sans', sans-serif;
+  margin-left: 5rem;
+  margin-top: 5rem;
+  overflow: hidden;
+}
+
+*:focus {
+    outline: none;
+}
+
+button {
+  border: none;
+  background-color: #611f69;
+  color: #fff;
+  border-radius: 4px;
+  padding: 19px 40px 20px;
+  &:hover {
+    cursor: pointer;
+  }
+}

@@ -1,13 +1,39 @@
 img {
-  height: 300px;
+  width: 450px;
 }
 
   .buttons-options {
       display: flex;
       width: 100%;
       justify-content: space-between;
-      .button-option {
-        background: white;
-        padding: 1rem;
+      margin-top: 1.5rem;
+    }
+    
+    .none {
+      padding: 1rem;
+      min-width: 8rem;
+      background: white;
+      border: 1px solid #611f69;
+      color: #611f69;
+      text-transform: capitalize; 
+      &:hover {
+        color: white;
+        background: #611f69;
       }
+    }
+    .correct {
+      padding: 1rem;
+      min-width: 8rem;
+      background: #008051;
+      border: 1px solid #008051;
+      color: white;
+      text-transform: capitalize;
+    }
+    .wrong {
+      padding: 1rem;
+      min-width: 8rem;
+      background: #ef4242;
+      border: 1px solid #ef4242;
+      color: white;
+      text-transform: capitalize;
     }

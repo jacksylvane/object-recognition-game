@@ -48,12 +48,12 @@ export class ScreenComponent implements OnInit {
 
   getClass(correct) {
     if (!this.questionAnswered) {
-      return 'white';
+      return 'none';
     }
     if (correct) {
-      return 'green';
+      return 'correct';
     } else {
-      return 'red';
+      return 'wrong';
     }
   }
 

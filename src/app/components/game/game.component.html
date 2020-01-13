@@ -1,22 +1,30 @@
-<div class="wrapper">
-  <div class="images">
-    <div *ngFor="let image of images">
-      <app-screen [img]="image" [gamePlaying]="gamePlaying" (answeredResult)="selectAnswer($event)"></app-screen>
+<div class="container">
+  <div class="wrapper">
+    <div class="heading">
+      <h1>Detect that thing!</h1>
+      <h3>AI object detection game</h3>
     </div>
+    <div class="images">
+      <div *ngFor="let image of images">
+        <app-screen [img]="image" [gamePlaying]="gamePlaying" (answeredResult)="selectAnswer($event)"></app-screen>
+      </div>
+    </div>
+    <ng-container *ngIf="imagesClasified else detecting">
+      <button (click)="startGame()" *ngIf="!gamePlaying">Start game</button>
+      <app-timer></app-timer>
+      <div class="result" *ngIf="gameOver">
+        <h3>
+          Your score: {{ score }}
+        </h3>
+        <p>Guessed: {{imagesCorrectlyGuessed}}/{{images.length}}</p>
+        <br>
+        <!-- {{ 'probability: ' + (correctAnswer.probability * 100).toFixed(0)  + '%'}} -->
+      </div>
+    </ng-container>
+    <ng-template #detecting>
+      <div class="detection">
+        AI detection in progress, please wait...
+      </div>
+    </ng-template>
   </div>
-  <ng-container *ngIf="imagesClasified else detecting">
-    <button (click)="startGame()">Start game</button>
-    <app-timer></app-timer>
-    <div class="result" *ngIf="gameOver">
-      <h3>
-        Your score: {{ score }}
-      </h3>
-      <p>Guessed: {{imagesCorrectlyGuessed}}/{{images.length}}</p>
-      <br>
-      <!-- {{ 'probability: ' + (correctAnswer.probability * 100).toFixed(0)  + '%'}} -->
-    </div>
-  </ng-container>
-  <ng-template #detecting>
-    Detecting...
-  </ng-template>
 </div>
